@@ -6,7 +6,7 @@
 #    By: safoh <safoh@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/08/11 14:27:07 by safoh         #+#    #+#                  #
-#    Updated: 2021/08/11 15:01:25 by safoh         ########   odam.nl          #
+#    Updated: 2021/08/12 15:41:01 by safoh         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,10 @@ fclean: clean
 
 re: fclean all
 
-ft_printf_test: re
+ft_printf_test: all
 	$(MAKE) quiet -C test/ft_printf_test/
+
+ft_printf_tester: all
+	cd test/ft_printf_tester; sh test m
 
 .PHONY: all clean fclean ft_printf_test

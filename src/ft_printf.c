@@ -6,120 +6,78 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/11 15:03:31 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/11 16:09:27 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/12 17:00:17 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 #include <stdio.h>
 
-size_t	ft_numlen(int num)
-{
-	size_t	size;
+//GOAL Write a library that contains ft_printf, a function
+//		that will mimic the real printf
+//		It will manage the following conversions: cspdiuxX%
+//CONVERSION:
+//		• %c print a single character. | cvrtchar
+//		• %s print a string of characters. | cvrtstr
+//		• %p The void * pointer argument is printed in hexadecimal. | cvrtp
+//		• %d print a decimal (base 10) number. | cvrtd
+//		• %i print an integer in base 10. | cvrti
+//		• %u print an unsigned decimal (base 10) number. | cvrtu
+//		• %x print a number in hexadecimal (base 16). | cvrtx
+//		• %% print a percent sign.
 
-	size = 0;
-	while (num)
+//INPUT a certain format & variadic argument(s)
+//LOOP through format until the end reach the of format
+//ADD each character to string unless %
+//IF we find a %
+//LOOP until we find conversion specifier
+//CALL corresponding conversion function
+//ADD returned buffer to string
+//PRINT string
+//RETURN length
+char	*ft_chrcat(char *string, const char *src)
+{
+	size_t	len;
+	char	*dest;
+
+	len = ft_strlen(string) + 1;
+	dest = calloc(len + 1, sizeof(char));
+	ft_memcpy((void *)dest, string, len);
+	free(string);
+	ft_memcpy((void *)&dest[len], src, 1);
+	return (dest);
+}
+
+static char	*printpars(const char *format, char *result, va_list ap)
+{
+	size_t	i;
+	size_t j;
+
+	j = 0;
+	if (ap)
+		j++;
+	while (format[i] != '\0')
 	{
-		num /= 10;
-		size++;
-	}
-	return (size);
-}
-
-char	*cvrtstr(char *s1, char *s2)
-{
-	size_t len_s1;
-	size_t len_s2;
-	char *dest;
-
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	dest = calloc(len_s1 + len_s2 + 1, sizeof(char));
-	ft_memcpy((void *)dest, s1, len_s1);
-	ft_memcpy((void *)&dest[len_s1], s2, len_s2);
-	return (dest);
-}
-
-char	*cvrtint(char *s1, int num) {
-	size_t len_s1;
-	size_t len_num;
-	char *dest;
-	char *s2;
-
-	len_s1 = ft_strlen(s1);
-	len_num = ft_numlen(num);
-	if (num == 0)
-		len_num = 1;
-	if (num < 0)
-		len_num += 1;
-	dest = calloc(len_s1 + len_num + 1, sizeof(char));
-	ft_memcpy((void *)dest, s1, len_s1);
-	s2 = ft_itoa(num);
-	puts(s2);
-	ft_memcpy((void *)&dest[len_s1], s2, len_num);
-	return (dest);
-}
-
-char	*cvrtchar(char *s1, const char *s2) {
-	size_t len_s1;
-	char *dest;
-
-	len_s1 = ft_strlen(s1);
-	dest = calloc(len_s1 + 2, sizeof(char));
-	ft_memcpy((void *)dest, s1, len_s1);
-	ft_memcpy((void *)&dest[len_s1], s2, 1);
-	return (dest);
-}
-
-char	*mr_asprintf(const char *format, va_list ap)
-{
-	size_t i;
-	size_t size;
-	char *result;
-
-	i = 0;
-	result = NULL;
-	size = ft_strlen(format);
-	result = calloc(size + 1, sizeof(char));
-	while (format[i])
-	{
-		if (format [i] == '%')
-		{
-	    	i++;
-	    	if (format[i] == '%')
-			{
-	      		result = cvrtchar(result, &format[i]);
-	      		i++;
-	    	}
-	    	if (format[i] == 's')
-			{
-        		result = cvrtstr(result, va_arg(ap, char *));
-        		i += 2;
-      		}
-			else if (format[i] == 'i') {
-				result = cvrtint(result, va_arg(ap, int));
-				i += 2;
-			}
-		}
-		else 
-		{
-			result = cvrtchar(result, &format[i]);
-			i++;
-		}
+		result = ft_chrcat(result, &format[i]);
+		i++;
 	}
 	return (result);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	va_list ap;
-	char *string;
+	va_list	ap;
+	char	*result;
+	size_t len;
 
 	if(!format)
 		return (0);
 	va_start(ap, format);
-	string = mr_asprintf(format, ap);
-	ft_putstr_fd(string, 1);
+	result = ft_strdup("");
+	result = printpars(format, result, ap);
+	ft_putstr_fd(result, 1);
+	len = ft_strlen(result);
+	free(result);
 	va_end(ap);
-	return (ft_strlen(string));
+	return (len);
 }

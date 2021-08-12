@@ -6,7 +6,7 @@
 #    By: safoh <safoh@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/08/11 13:33:46 by safoh         #+#    #+#                  #
-#    Updated: 2021/08/11 14:43:40 by safoh         ########   odam.nl          #
+#    Updated: 2021/08/12 13:57:15 by safoh         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRCS			:=	ft_memset.c ft_bzero.c ft_memcpy.c ft_strlen.c ft_atoi.c \
 		ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c \
 		ft_tolower.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
 		ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
-		ft_putnbr_fd.c ft_calloc.c ft_memchr.c ft_strmapi.c ft_itoa.c
+		ft_putnbr_fd.c ft_calloc.c ft_memchr.c ft_strmapi.c ft_itoa.c \
+		ft_numlen.c
 SRC_DIR 		:=	./src
 INC_DIR 		:=	./include
 BUILD_DIR		:=	./build

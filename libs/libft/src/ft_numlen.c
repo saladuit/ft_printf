@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_numlen.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: saladin <saladin@student.codam.nl>           +#+                     */
+/*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/10/29 02:44:46 by saladin       #+#    #+#                 */
-/*   Updated: 2021/08/12 16:13:31 by safoh         ########   odam.nl         */
+/*   Created: 2021/08/12 13:54:02 by safoh         #+#    #+#                 */
+/*   Updated: 2021/08/12 13:54:48 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_numlen(int num)
 {
-	size_t	len;
+	size_t	size;
 
-	len = 0;
-	if (!s)
-		return (0);
-	while (s[len] != '\0')
+	size = 0;
+	while (num)
 	{
-		len++;
+		num /= 10;
+		size++;
 	}
-	return (len);
+	return (size);
 }
