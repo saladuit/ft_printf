@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_printf.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: safoh <safoh@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/08/11 15:03:31 by safoh         #+#    #+#                 */
+/*   Updated: 2021/08/11 16:09:27 by safoh         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/ft_printf.h"
 #include <stdio.h>
 
@@ -40,7 +52,6 @@ char	*cvrtint(char *s1, int num) {
 		len_num = 1;
 	if (num < 0)
 		len_num += 1;
-	printf("\nlen num:%zu\n", len_num);
 	dest = calloc(len_s1 + len_num + 1, sizeof(char));
 	ft_memcpy((void *)dest, s1, len_s1);
 	s2 = ft_itoa(num);
@@ -70,15 +81,12 @@ char	*mr_asprintf(const char *format, va_list ap)
 	result = NULL;
 	size = ft_strlen(format);
 	result = calloc(size + 1, sizeof(char));
-	printf("\n\n");
-	puts(format);
 	while (format[i])
 	{
-		printf("\nformat[i] == %c", format[i]);
-		if (format [i] == '{')
+		if (format [i] == '%')
 		{
 	    	i++;
-	    	if (format[i] == '{')
+	    	if (format[i] == '%')
 			{
 	      		result = cvrtchar(result, &format[i]);
 	      		i++;
@@ -107,9 +115,11 @@ int	ft_printf(const char *format, ...)
 	va_list ap;
 	char *string;
 
-	string = NULL;
+	if(!format)
+		return (0);
 	va_start(ap, format);
 	string = mr_asprintf(format, ap);
+	ft_putstr_fd(string, 1);
 	va_end(ap);
 	return (ft_strlen(string));
 }

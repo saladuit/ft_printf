@@ -1,25 +1,43 @@
-NAME  = libftprintf.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: safoh <safoh@student.codam.nl>               +#+                      #
+#                                                    +#+                       #
+#    Created: 2021/08/11 14:27:07 by safoh         #+#    #+#                  #
+#    Updated: 2021/08/11 15:01:25 by safoh         ########   odam.nl          #
+#                                                                              #
+# **************************************************************************** #
 
-								#Project files
-SRC_DIR := src
-OBJ_DIR := build
-SRCS = ft_printf.c
-LIB = libs/libft/libft.a
+NAME			:=	libftprintf.a
+CC				:=	gcc
+CFLAGS			=	-Wall -Wextra -Werror
+RM				:=	rm -f
 
-HEADER_FILES = include/ft_printf.h
-OBJS = $(SRCS:.c=.o)
+#################################Project_files##################################
+# SRCS			=	RESOURCES
+# SRC_DIR		=	SOURCES DIRECTORY
+# INC_DIR		=	INCLUDES DIRECTORY
+# BUILD_DIR		=	BUILD DIRECTORY
+# OBJS			=	OBJECTS
+# LIB			=	LIBFT LIBRARY
 
-								#Compiler flags
-CC     = gcc
-CFLAGS = -Wall -Wextra -Werror
+SRCS			:=	ft_printf.c
+SRC_DIR			:=	./src
+INC_DIR			:=	./include
+BUILD_DIR		:=	./build
+OBJS			:=	$(addprefix $(BUILD_DIR)/, $(SRCS:.c=.o))
+LIB				:=	libs/libft/libft.a
 
-								#Release build settings
-RELDIR = .
+###############################################################################
+# MESSSAGE		=	Message after compiling
+# C_MESSAGE		=	Message for building objects
 
-RELEXE = $(RELDIR)/$(NAME)
-RELOBJS = $(addprefix $(OBJ_DIR)/, $(OBJS))
+MESSSAGE		=	"Run "make ft_printf_test" to test the lilbftprintf.a"
+C_MESSAGE		=	"Building C objects... %-33.33s\r"
 
-								#Debug settings
+#################################Debug_settings################################
 ifdef DEBUG
 CFLAGS	+=	-g
 NAME = debug_libftprintf.a
@@ -36,30 +54,40 @@ endif
 ifdef LEAKS
 CFLAGS	+=	-D LEAKS=1
 endif
-								#Release rules
-all: libft release
+ifdef CRITERION
+CFLAGS	+=	-lcriterion
+endif
 
-release: $(RELEXE)
+all: $(NAME)
 
-$(RELEXE): $(RELOBJS) $(LIB)
+$(NAME): $(OBJS) $(LIB)
+	@echo "\n"
 	ar rcs $@ $^
-	ar -q $(LIB) $(OBJ)
+	ar -q $(LIB) $(OBJS)
 	cp $(LIB) $(NAME)
+	@echo $(MESSSAGE)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) -c $(CFLAGS) -o $@ $<
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	mkdir -p $(dir $@)
+	@printf $(C_MESSAGE)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-libft:
+$(LIB):
 	$(MAKE) -C libs/libft/
 
 clean:
-	rm -f $(RELOBJS)
+	$(RM) $(OBJS)
 	$(MAKE) clean -C libs/libft/
+	@echo "Objects libft cleaned"
 
-fclean:
-	rm -f $(RELEXE) $(RELOBJS) $(NAME)
+fclean: clean
+	$(RM) $(NAME)
 	$(MAKE) fclean -C libs/libft/
+	@echo "Library printf cleaned"
 
 re: fclean all
 
-.PHONY: all clean release re fclean
+ft_printf_test: re
+	$(MAKE) quiet -C test/ft_printf_test/
+
+.PHONY: all clean fclean ft_printf_test

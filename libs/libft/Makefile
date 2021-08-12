@@ -1,30 +1,47 @@
-NAME  = libft.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: safoh <safoh@student.codam.nl>               +#+                      #
+#                                                    +#+                       #
+#    Created: 2021/08/11 13:33:46 by safoh         #+#    #+#                  #
+#    Updated: 2021/08/11 14:43:40 by safoh         ########   odam.nl          #
+#                                                                              #
+# **************************************************************************** #
 
-								#Project files
-SRC_DIR := src
-OBJ_DIR := build
-SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
-		ft_memcmp.c ft_strlen.c ft_strlcpy.c ft_strlcat.c ft_strchr.c \
-		ft_strrchr.c ft_strnstr.c ft_strncmp.c ft_atoi.c  ft_isalpha.c \
+NAME			:=	libft.a
+CC				:=	gcc
+CFLAGS			=	-Wall -Wextra -Werror
+RM				:=	rm -f
+
+################################################################################
+# SRCS			=	RESOURCES
+# SRC_DIR		=	SOURCES DIRECTORY
+# INC_DIR		=	INCLUDES DIRECTORY
+# BUILD_DIR		=	BUILD DIRECTORY
+# OBJS			=	OBJECTS
+
+SRCS			:=	ft_memset.c ft_bzero.c ft_memcpy.c ft_strlen.c ft_atoi.c \
+		ft_memmove.c ft_memccpy.c ft_memcmp.c ft_strlcpy.c ft_strlcat.c \
+		ft_strrchr.c ft_strnstr.c ft_strncmp.c ft_isalpha.c ft_strchr.c \
 		ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c \
-		ft_tolower.c  ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c  \
-		ft_strdup.c ft_substr.c ft_strjoin.c  ft_strtrim.c ft_split.c  \
-		ft_putnbr_fd.c ft_calloc.c ft_memchr.c ft_strmapi.c ft_itoa.c \
+		ft_tolower.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
+		ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
+		ft_putnbr_fd.c ft_calloc.c ft_memchr.c ft_strmapi.c ft_itoa.c
+SRC_DIR 		:=	./src
+INC_DIR 		:=	./include
+BUILD_DIR		:=	./build
+OBJS			:=	$(addprefix $(BUILD_DIR)/, $(SRCS:.c=.o))
 
-HEADER_FILES = libft.h
-OBJS = $(SRCS:.c=.o)
+###############################################################################
+# MESSSAGE		=	Message after compiling
+# C_MESSAGE		=	Message for building objects
 
-								#Compiler flags
-CC     = gcc
-CFLAGS = -Wall -Wextra -Werror
+MESSSAGE		=	"Run ./tests/Libftest/grademe.sh to test the libft library"
+C_MESSAGE		=	"Building C objects... %-33.33s\r"
 
-								#Release build settings
-RELDIR = .
-
-RELEXE = $(RELDIR)/$(NAME)
-RELOBJS = $(addprefix $(OBJ_DIR)/, $(OBJS))
-
-								#Debug settings
+#################################Debug_settings################################
 ifdef DEBUG
 CFLAGS	+=	-g
 NAME = debug_libft.a
@@ -41,23 +58,30 @@ endif
 ifdef LEAKS
 CFLAGS	+=	-D LEAKS=1
 endif
-								#Release rules
-all: release
+ifdef CRITERION
+CFLAGS	+=	-lcriterion
+endif
 
-release: $(RELEXE)
+all: $(NAME)
 
-$(RELEXE): $(RELOBJS) | $(RELDIR)
-	ar rc $(RELEXE) $^
+$(NAME): $(OBJS)
+	@echo "\n"
+	ar rc $@ $^
+	@echo $(MESSSAGE)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) -c $(CFLAGS) -o $@ $<
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	@printf $(C_MESSAGE)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(RELOBJS)
+	@$(RM) $(OBJS)
+	@echo "Objects libft cleaned"
 
-fclean:
-	rm -f $(RELEXE) $(RELOBJS) $(NAME)
+fclean: clean
+	@$(RM) $(NAME)
+	@echo "Library libft cleaned"
 
 re: fclean all
 
-.PHONY: all clean release re debug fclean
+.PHONY: all clean fclean
