@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/11 15:03:31 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/12 13:49:21 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/18 13:28:11 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,6 @@
 //GOAL Write a library that contains ft_printf, a function
 //		that will mimic the real printf
 //		It will manage the following conversions: cspdiuxX%
-size_t	ft_numlen(int num)
-{
-	size_t	size;
-
-	size = 0;
-	while (num)
-	{
-		num /= 10;
-		size++;
-	}
-	return (size);
-}
 
 char	*cvrtstr(char *s1, char *s2)
 {

@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/11 15:03:31 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/12 17:00:17 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/18 14:40:36 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,27 +35,24 @@
 //ADD returned buffer to string
 //PRINT string
 //RETURN length
+
 char	*ft_chrcat(char *string, const char *src)
 {
 	size_t	len;
 	char	*dest;
 
-	len = ft_strlen(string) + 1;
-	dest = calloc(len + 1, sizeof(char));
+	len = ft_strlen(string);
+	dest = calloc(len + 2, sizeof(char));
 	ft_memcpy((void *)dest, string, len);
 	free(string);
 	ft_memcpy((void *)&dest[len], src, 1);
 	return (dest);
 }
 
-static char	*printpars(const char *format, char *result, va_list ap)
+static char	*printpars(const char *format, char *result)
 {
 	size_t	i;
-	size_t j;
 
-	j = 0;
-	if (ap)
-		j++;
 	while (format[i] != '\0')
 	{
 		result = ft_chrcat(result, &format[i]);
@@ -73,8 +70,8 @@ int	ft_printf(const char *format, ...)
 	if(!format)
 		return (0);
 	va_start(ap, format);
-	result = ft_strdup("");
-	result = printpars(format, result, ap);
+	result = calloc(1, sizeof(char));
+	result = printpars(format, result);
 	ft_putstr_fd(result, 1);
 	len = ft_strlen(result);
 	free(result);

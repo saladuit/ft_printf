@@ -6,7 +6,7 @@
 #    By: safoh <safoh@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/08/11 14:27:07 by safoh         #+#    #+#                  #
-#    Updated: 2021/08/12 15:41:01 by safoh         ########   odam.nl          #
+#    Updated: 2021/08/18 14:26:14 by safoh         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ C_MESSAGE		=	"Building C objects... %-33.33s\r"
 #################################Debug_settings################################
 ifdef DEBUG
 CFLAGS	+=	-g
-NAME = debug_libftprintf.a
+NAME = libftprintf_debug.a
 endif
 ifdef FSAN
 CFLAGS	+=	-fsanitize=address
