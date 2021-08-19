@@ -6,17 +6,18 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/18 14:23:51 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/19 17:52:34 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/19 21:13:54 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+#include <stdio.h>
 
 int	main(void)
 {
-	char c;
+	int c;
 
-	c = 'b';
-	ft_printf("shsldkj %c", c);
+	c = -2147483648;
+	ft_printf("%d", c);
 	return (0);
 }

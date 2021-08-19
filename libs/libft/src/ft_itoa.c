@@ -6,53 +6,36 @@
 /*   By: saladin <saladin@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 02:50:50 by saladin       #+#    #+#                 */
-/*   Updated: 2021/07/26 16:32:27 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/19 21:32:44 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-static int	ft_itoa_strlen(int n)
+char	*ft_itoa(int nb)
 {
-	int	len;
+	size_t	len;
+	char	*result;
+	size_t neg;
+	long long buffer;
 
-	if (n <= 0)
-		len = 1;
-	else
-		len = 0;
-	while (n)
-	{
-		++len;
-		n /= 10;
-	}
-	return (len);
-}
-
-char	*ft_itoa(int n)
-{
-	long long int	buffer;
-	size_t			len;
-	char			*alnum;
-
-	buffer = n;
-	len = ft_itoa_strlen(n);
-	alnum = malloc(len + 1);
-	if (!alnum)
+	buffer = nb;
+	len = ft_numlen(buffer);
+	neg = 0;
+	result = calloc(len + 1, sizeof(char));
+	if (!result)
 		return (0);
-	alnum[len - 1] = '\0';
-	if (n == 0)
-		*alnum = '0';
-	if (n < 0)
+	if (buffer < 0)
 	{
-		*alnum = '-';
-		buffer *= -1;
+		buffer = -buffer;
+		*result = '-';
+		neg = 1;
 	}
-	alnum[len] = '\0';
-	while (buffer)
+	while (len > neg)
 	{
 		len--;
-		alnum[len] = (buffer % 10) + '0';
+		result[len] = (buffer % 10) + '0';
 		buffer /= 10;
 	}
-	return (alnum);
+	return (result);
 }

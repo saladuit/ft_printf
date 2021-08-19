@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/11 15:03:31 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/19 19:00:54 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/19 20:58:07 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,32 @@
 //PRINT string
 //RETURN length
 
+void	ft_pntprint(size_t *len, unsigned long ul)
+{
+	ul += 0;
+//	printf("\n%ld\n", ul);
+	*len += 14;
+	return ;
+}
+
+void	ft_hexprint(size_t *len, unsigned long ul)
+{
+	*len += ft_numlen(ul);
+	return ;
+}
+void	ft_udecprint(size_t *len, unsigned int n)
+{
+	ft_putnbr_fd(n, 1);
+	*len += ft_numlen(n);
+	return ;
+}
+void	ft_decprint(size_t *len, int n)
+{
+	ft_putnbr_fd(n, 1);
+	*len += ft_numlen(n);
+	return ;
+}
+
 void	ft_strprint(size_t *len, char *string)
 {
 	if (!string)
@@ -47,6 +73,7 @@ void	ft_strprint(size_t *len, char *string)
 	*len += ft_strlen(string);
 	return ;
 }
+
 void	ft_chrprint(size_t *len, int c)
 {
 	ft_putchar_fd(c, 1);
@@ -58,8 +85,18 @@ void	ft_cnvspc(int c, size_t *len, va_list ap)
 {
 	if (c == 'c')
 		ft_chrprint(len, va_arg(ap, int));
-	if (c == 's')
+	else if (c == 's')
 		ft_strprint(len, va_arg(ap, char*));
+	else if (c == 'i' || c == 'd')
+		ft_decprint(len, va_arg(ap, int));
+	else if (c == 'u')
+		ft_udecprint(len, va_arg(ap, unsigned int));
+	else if (c == 'x')
+		ft_hexprint(len, va_arg(ap, unsigned int));
+	else if (c == 'p')
+		ft_pntprint(len, va_arg(ap, unsigned long));
+	else if (c == '%')
+		ft_putchar_fd('%', 1);
 	return ;
 }
 
@@ -89,6 +126,7 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 	size_t len;
 
+	len = 0;
 	if(!format)
 		return (0);
 	va_start(ap, format);
