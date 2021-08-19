@@ -6,7 +6,7 @@
 #    By: safoh <safoh@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/08/11 14:27:07 by safoh         #+#    #+#                  #
-#    Updated: 2021/08/18 14:26:14 by safoh         ########   odam.nl          #
+#    Updated: 2021/08/19 15:53:15 by safoh         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ C_MESSAGE		=	"Building C objects... %-33.33s\r"
 ifdef DEBUG
 CFLAGS	+=	-g
 NAME = libftprintf_debug.a
+LIB = libs/libft/libft_debug.a
 endif
 ifdef FSAN
 CFLAGS	+=	-fsanitize=address
@@ -81,7 +82,7 @@ clean:
 	@echo "Objects libft cleaned"
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) printf_gdb
 	$(MAKE) fclean -C libs/libft/
 	@echo "Library printf cleaned"
 
@@ -92,5 +93,8 @@ ft_printf_test: all
 
 ft_printf_tester: all
 	cd test/ft_printf_tester; sh test m
+
+main:
+	gcc src/main.c -L. -lftprintf_debug -g -o printf_gdb
 
 .PHONY: all clean fclean ft_printf_test

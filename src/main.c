@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/18 14:23:51 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/18 14:24:37 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/19 17:52:34 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int	main(void)
 {
-	ft_printf("skjfhlaskdjhlaskdjfh");
+	char c;
+
+	c = 'b';
+	ft_printf("shsldkj %c", c);
 	return (0);
 }

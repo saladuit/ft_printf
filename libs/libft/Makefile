@@ -6,7 +6,7 @@
 #    By: safoh <safoh@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/08/11 13:33:46 by safoh         #+#    #+#                  #
-#    Updated: 2021/08/12 13:57:15 by safoh         ########   odam.nl          #
+#    Updated: 2021/08/19 15:15:23 by safoh         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ C_MESSAGE		=	"Building C objects... %-33.33s\r"
 #################################Debug_settings################################
 ifdef DEBUG
 CFLAGS	+=	-g
-NAME = debug_libft.a
+NAME = libft_debug.a
 endif
 ifdef FSAN
 CFLAGS	+=	-fsanitize=address
@@ -73,7 +73,7 @@ $(NAME): $(OBJS)
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@printf $(C_MESSAGE)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@$(RM) $(OBJS)

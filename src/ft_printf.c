@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/11 15:03:31 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/18 14:40:36 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/19 17:57:24 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,44 @@
 //PRINT string
 //RETURN length
 
-char	*ft_chrcat(char *string, const char *src)
+char	*ft_chrcat(char *string, int c)
 {
 	size_t	len;
 	char	*dest;
 
 	len = ft_strlen(string);
-	dest = calloc(len + 2, sizeof(char));
+	dest = ft_calloc(len + 2, sizeof(char));
 	ft_memcpy((void *)dest, string, len);
-	free(string);
-	ft_memcpy((void *)&dest[len], src, 1);
+	if (string != NULL)
+		free(string);
+	dest[len] = c;
 	return (dest);
 }
 
-static char	*printpars(const char *format, char *result)
+char	*ft_argcat(int c, char *result, va_list ap)
+{
+	if (c == 'c')
+		result = ft_chrcat(result, va_arg(ap, int));
+	return (result);
+}
+
+static char	*printpars(const char *format, char *result, va_list ap)
 {
 	size_t	i;
 
+	i = 0;
 	while (format[i] != '\0')
 	{
-		result = ft_chrcat(result, &format[i]);
-		i++;
+		if (format[i] == '%')
+		{
+			result = ft_argcat(format[i + 1], result, ap);
+			i += 2;
+		}
+		else
+		{
+			result = ft_chrcat(result, format[i]);
+			i++;
+		}
 	}
 	return (result);
 }
@@ -70,8 +87,11 @@ int	ft_printf(const char *format, ...)
 	if(!format)
 		return (0);
 	va_start(ap, format);
-	result = calloc(1, sizeof(char));
-	result = printpars(format, result);
+	result = ft_calloc(1, sizeof(char));
+	if (!result)
+		return (0);
+	result = printpars(format, result, ap);
+	printf("\n%ld\n", sizeof(result));
 	ft_putstr_fd(result, 1);
 	len = ft_strlen(result);
 	free(result);
