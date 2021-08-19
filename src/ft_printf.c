@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/11 15:03:31 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/19 17:57:24 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/19 19:00:54 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,34 @@
 //PRINT string
 //RETURN length
 
-char	*ft_chrcat(char *string, int c)
+void	ft_strprint(size_t *len, char *string)
 {
-	size_t	len;
-	char	*dest;
-
-	len = ft_strlen(string);
-	dest = ft_calloc(len + 2, sizeof(char));
-	ft_memcpy((void *)dest, string, len);
-	if (string != NULL)
-		free(string);
-	dest[len] = c;
-	return (dest);
+	if (!string)
+	{
+		ft_putstr_fd("(null)", 1);
+		*len += ft_strlen("(null)");
+	}
+	ft_putstr_fd(string, 1);
+	*len += ft_strlen(string);
+	return ;
+}
+void	ft_chrprint(size_t *len, int c)
+{
+	ft_putchar_fd(c, 1);
+	*len += 1;
+	return ;
 }
 
-char	*ft_argcat(int c, char *result, va_list ap)
+void	ft_cnvspc(int c, size_t *len, va_list ap)
 {
 	if (c == 'c')
-		result = ft_chrcat(result, va_arg(ap, int));
-	return (result);
+		ft_chrprint(len, va_arg(ap, int));
+	if (c == 's')
+		ft_strprint(len, va_arg(ap, char*));
+	return ;
 }
 
-static char	*printpars(const char *format, char *result, va_list ap)
+static void	printpars(const char *format, size_t *len, va_list ap)
 {
 	size_t	i;
 
@@ -66,35 +72,27 @@ static char	*printpars(const char *format, char *result, va_list ap)
 	{
 		if (format[i] == '%')
 		{
-			result = ft_argcat(format[i + 1], result, ap);
+			ft_cnvspc(format[i + 1], len, ap);
 			i += 2;
 		}
 		else
 		{
-			result = ft_chrcat(result, format[i]);
+			ft_chrprint(len, format[i]);
 			i++;
 		}
 	}
-	return (result);
+	return ;
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	char	*result;
 	size_t len;
 
 	if(!format)
 		return (0);
 	va_start(ap, format);
-	result = ft_calloc(1, sizeof(char));
-	if (!result)
-		return (0);
-	result = printpars(format, result, ap);
-	printf("\n%ld\n", sizeof(result));
-	ft_putstr_fd(result, 1);
-	len = ft_strlen(result);
-	free(result);
+	printpars(format, &len, ap);
 	va_end(ap);
 	return (len);
 }
