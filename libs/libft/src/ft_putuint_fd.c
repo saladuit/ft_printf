@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_putuint_fd.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/08/18 14:23:51 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/20 11:59:38 by safoh         ########   odam.nl         */
+/*   Created: 2021/08/20 11:41:53 by safoh         #+#    #+#                 */
+/*   Updated: 2021/08/20 11:43:45 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
-#include <stdio.h>
+#include "../include/libft.h"
 
-int	main(void)
+void	ft_putuint_fd(unsigned int nb, int fd)
 {
-	unsigned int c;
+	char	*result;
 
-	c = 2147483648;
-	ft_printf("%u", (unsigned int)c);
-	return (0);
+	result = ft_uitoa(nb);
+	ft_putstr_fd(result, fd);
+	free(result);
+	return ;
 }

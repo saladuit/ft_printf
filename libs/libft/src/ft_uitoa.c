@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_numlen.c                                        :+:    :+:            */
+/*   ft_uitoa.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/08/12 13:54:02 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/20 12:08:04 by safoh         ########   odam.nl         */
+/*   Created: 2021/08/20 11:46:29 by safoh         #+#    #+#                 */
+/*   Updated: 2021/08/20 11:47:23 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-size_t	ft_numlen(long long num)
-{
-	size_t	size;
 
-	size = 0;
-	if (num == 0)
-		return (1);
-	if (num < 0)
-		size++;
-	while (num)
+char	*ft_uitoa(unsigned int nb)
+{
+	size_t	len;
+	char	*result;
+	size_t neg;
+	long long buffer;
+
+	buffer = nb;
+	len = ft_numlen(buffer);
+	neg = 0;
+	result = calloc(len + 1, sizeof(char));
+	if (!result)
+		return (0);
+	if (buffer < 0)
 	{
-		num /= 10;
-		size++;
+		buffer = -buffer;
+		*result = '-';
+		neg = 1;
 	}
-	return (size);
+	while (len > neg)
+	{
+		len--;
+		result[len] = (buffer % 10) + '0';
+		buffer /= 10;
+	}
+	return (result);
 }

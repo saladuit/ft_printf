@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/11 15:03:31 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/19 20:58:07 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/20 12:16:42 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@
 //PRINT string
 //RETURN length
 
+void	ft_printpct(size_t *len)
+{
+	ft_putchar_fd('%', 1);
+	*len += 1;
+	return ;
+}
+
 void	ft_pntprint(size_t *len, unsigned long ul)
 {
 	ul += 0;
@@ -49,12 +56,14 @@ void	ft_hexprint(size_t *len, unsigned long ul)
 	*len += ft_numlen(ul);
 	return ;
 }
+
 void	ft_udecprint(size_t *len, unsigned int n)
 {
-	ft_putnbr_fd(n, 1);
+	ft_putuint_fd(n, 1);
 	*len += ft_numlen(n);
 	return ;
 }
+
 void	ft_decprint(size_t *len, int n)
 {
 	ft_putnbr_fd(n, 1);
