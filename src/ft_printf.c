@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/11 15:03:31 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/20 12:16:42 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/25 15:23:17 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	ft_cnvspc(int c, size_t *len, va_list ap)
 	else if (c == 'p')
 		ft_pntprint(len, va_arg(ap, unsigned long));
 	else if (c == '%')
-		ft_putchar_fd('%', 1);
+		ft_printpct(len);
 	return ;
 }
 

@@ -6,18 +6,20 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/18 14:23:51 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/20 11:59:38 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/25 15:07:50 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 #include <stdio.h>
 
+// make re DEBUG=1 main; ./printf_gdb
+
 int	main(void)
 {
-	unsigned int c;
+	char	c;
 
-	c = 2147483648;
-	ft_printf("%u", (unsigned int)c);
+	c = '%';
+	ft_printf("%%", c);
 	return (0);
 }
