@@ -6,7 +6,7 @@
 #    By: safoh <safoh@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/08/11 14:27:07 by safoh         #+#    #+#                  #
-#    Updated: 2021/08/19 19:30:04 by safoh         ########   odam.nl          #
+#    Updated: 2021/08/26 18:56:08 by safoh         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,21 +23,23 @@ RM				:=	rm -f
 # OBJS			=	OBJECTS
 # LIB			=	LIBFT LIBRARY
 
-SRCS			:=	ft_printf.c
+SRCS			:=	ft_printf.c ft_printpct.c ft_printpnt.c ft_printheX.c \
+		ft_printhex.c ft_printudec.c ft_printdec.c ft_printstr.c ft_cnvspc.c \
+		ft_printchr.c 
 SRC_DIR			:=	./src
 INC_DIR			:=	./include
 BUILD_DIR		:=	./build
 OBJS			:=	$(addprefix $(BUILD_DIR)/, $(SRCS:.c=.o))
 LIB				:=	libs/libft/libft.a
 
-###############################################################################
+################################################################################
 # MESSSAGE		=	Message after compiling
 # C_MESSAGE		=	Message for building objects
 
 MESSSAGE		=	"Run "make ft_printf_test" to test the lilbftprintf.a"
 C_MESSAGE		=	"Building C objects... %-33.33s\r"
 
-#################################Debug_settings################################
+#################################Debug_settings#################################
 ifdef DEBUG
 CFLAGS	+=	-g
 NAME = libftprintf_debug.a

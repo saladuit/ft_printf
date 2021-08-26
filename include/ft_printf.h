@@ -6,7 +6,7 @@
 /*   By: saladin <saladin@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/10 17:29:41 by saladin       #+#    #+#                 */
-/*   Updated: 2021/08/20 12:09:52 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/26 18:40:07 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include "/home/saladuit/Documents/Projects_Codam/ft_printf/libs/libft/include/libft.h"
+# include "../libs/libft/include/libft.h"
 
-int	ft_printf(const char *format, ...);
-char	*mr_asprintf(const char *format, va_list ap);
-char	*cvrtchar(char *s1, const char *s2);
-char	*cvrtint(char *s1, int num);
-char	*cvrtstr(char *s1, char *s2);
+int		ft_printf(const char *format, ...);
+void	ft_printpct(size_t *len);
+void	ft_printpnt(size_t *len, unsigned long ul);
+void	ft_printheX(size_t *len, unsigned int ui);
+void	ft_printhex(size_t *len, unsigned int ui);
+void	ft_printudec(size_t *len, unsigned int n);
+void	ft_printdec(size_t *len, int n);
+void	ft_printstr(size_t *len, char *string);
+void	ft_printchr(size_t *len, int c);
+void	ft_cnvspc(int c, size_t *len, va_list ap);
 
 #endif

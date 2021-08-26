@@ -6,7 +6,7 @@
 /*   By: saladin <saladin@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 02:50:50 by saladin       #+#    #+#                 */
-/*   Updated: 2021/08/19 21:32:44 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/26 18:48:54 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_itoa(int nb)
 {
-	size_t	len;
-	char	*result;
-	size_t neg;
-	long long buffer;
+	size_t		len;
+	char		*result;
+	size_t		neg;
+	long long	buffer;
 
 	buffer = nb;
 	len = ft_numlen(buffer);

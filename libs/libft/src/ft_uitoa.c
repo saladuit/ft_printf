@@ -6,19 +6,18 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/20 11:46:29 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/20 11:47:23 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/26 18:50:03 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-
 char	*ft_uitoa(unsigned int nb)
 {
-	size_t	len;
-	char	*result;
-	size_t neg;
-	long long buffer;
+	size_t		len;
+	char		*result;
+	size_t		neg;
+	long long	buffer;
 
 	buffer = nb;
 	len = ft_numlen(buffer);

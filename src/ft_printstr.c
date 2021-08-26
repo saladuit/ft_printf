@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memchr.c                                        :+:    :+:            */
+/*   ft_printstr.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: saladin <saladin@student.codam.nl>           +#+                     */
+/*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/10/29 02:50:54 by saladin       #+#    #+#                 */
-/*   Updated: 2021/08/26 18:48:25 by safoh         ########   odam.nl         */
+/*   Created: 2021/08/26 18:29:20 by safoh         #+#    #+#                 */
+/*   Updated: 2021/08/26 18:29:39 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/ft_printf.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_printstr(size_t *len, char *string)
 {
-	unsigned char	*string;
-	size_t			i;
-
-	string = (unsigned char *)s;
-	i = 0;
-	while (i < n)
+	if (!string)
 	{
-		if (string[i] == (unsigned char)c)
-			return (string + i);
-		i++;
+		ft_putstr_fd("(null)", 1);
+		*len += ft_strlen("(null)");
 	}
-	return (NULL);
+	ft_putstr_fd(string, 1);
+	*len += ft_strlen(string);
+	return ;
 }
