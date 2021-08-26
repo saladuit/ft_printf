@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_strtoupper.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/08/18 14:23:51 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/26 17:28:42 by safoh         ########   odam.nl         */
+/*   Created: 2021/08/26 17:45:19 by safoh         #+#    #+#                 */
+/*   Updated: 2021/08/26 17:50:38 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
-#include <stdio.h>
+#include "../include/libft.h"
 
-// make re DEBUG=1 main; ./printf_gdb
-
-int	main(void)
+void	ft_strtoupper(char *string)
 {
-	unsigned int	c;
+	size_t	i;
 
-	c = 160;
-	ft_printf("%X", c);
-	return (0);
+	i = 0;
+	while (string[i] != '\0')
+	{
+		string[i] = ft_toupper(string[i]);
+		i++;
+	}
+	return ;
 }

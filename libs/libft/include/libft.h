@@ -6,7 +6,7 @@
 /*   By: saladin <saladin@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/10 17:29:41 by saladin       #+#    #+#                 */
-/*   Updated: 2021/08/20 12:09:13 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/26 18:01:52 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,13 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strtrim(char const *s1, char const *set);
+void	ft_strtoupper(char *string);
+void	ft_strtolower(char *string);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_uitoa(unsigned int n);
+char	*ft_uitoh(unsigned int n);
+char	*ft_ultoh(unsigned long n);
 
 #endif

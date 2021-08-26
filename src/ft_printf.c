@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/11 15:03:31 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/25 15:23:17 by safoh         ########   odam.nl         */
+/*   Updated: 2021/08/26 18:05:29 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,35 +43,56 @@ void	ft_printpct(size_t *len)
 	return ;
 }
 
-void	ft_pntprint(size_t *len, unsigned long ul)
+void	ft_printpnt(size_t *len, unsigned long ul)
 {
-	ul += 0;
-//	printf("\n%ld\n", ul);
-	*len += 14;
+	char	*result;
+
+	ft_putstr_fd("0x", 1);
+	result = ft_ultoh(ul);
+	ft_putstr_fd(result, 1);
+	*len += ft_strlen(result) + 2;
+	free(result);
 	return ;
 }
 
-void	ft_hexprint(size_t *len, unsigned long ul)
+void	ft_printheX(size_t *len, unsigned int ui)
 {
-	*len += ft_numlen(ul);
+	char	*result;
+
+	result = ft_uitoh(ui);
+	ft_strtoupper(result);
+	ft_putstr_fd(result, 1);
+	*len += ft_strlen(result);
+	free(result);
 	return ;
 }
 
-void	ft_udecprint(size_t *len, unsigned int n)
+void	ft_printhex(size_t *len, unsigned int ui)
+{
+	char	*result;
+
+	result = ft_uitoh(ui);
+	ft_putstr_fd(result, 1);
+	*len += ft_strlen(result);
+	free(result);
+	return ;
+}
+
+void	ft_printudec(size_t *len, unsigned int n)
 {
 	ft_putuint_fd(n, 1);
 	*len += ft_numlen(n);
 	return ;
 }
 
-void	ft_decprint(size_t *len, int n)
+void	ft_printdec(size_t *len, int n)
 {
 	ft_putnbr_fd(n, 1);
 	*len += ft_numlen(n);
 	return ;
 }
 
-void	ft_strprint(size_t *len, char *string)
+void	ft_printstr(size_t *len, char *string)
 {
 	if (!string)
 	{
@@ -83,7 +104,7 @@ void	ft_strprint(size_t *len, char *string)
 	return ;
 }
 
-void	ft_chrprint(size_t *len, int c)
+void	ft_printchr(size_t *len, int c)
 {
 	ft_putchar_fd(c, 1);
 	*len += 1;
@@ -93,17 +114,19 @@ void	ft_chrprint(size_t *len, int c)
 void	ft_cnvspc(int c, size_t *len, va_list ap)
 {
 	if (c == 'c')
-		ft_chrprint(len, va_arg(ap, int));
+		ft_printchr(len, va_arg(ap, int));
 	else if (c == 's')
-		ft_strprint(len, va_arg(ap, char*));
+		ft_printstr(len, va_arg(ap, char*));
 	else if (c == 'i' || c == 'd')
-		ft_decprint(len, va_arg(ap, int));
+		ft_printdec(len, va_arg(ap, int));
 	else if (c == 'u')
-		ft_udecprint(len, va_arg(ap, unsigned int));
+		ft_printudec(len, va_arg(ap, unsigned int));
 	else if (c == 'x')
-		ft_hexprint(len, va_arg(ap, unsigned int));
+		ft_printhex(len, va_arg(ap, unsigned int));
+	else if (c == 'X')
+		ft_printheX(len, va_arg(ap, unsigned int));
 	else if (c == 'p')
-		ft_pntprint(len, va_arg(ap, unsigned long));
+		ft_printpnt(len, va_arg(ap, unsigned long));
 	else if (c == '%')
 		ft_printpct(len);
 	return ;
@@ -123,7 +146,7 @@ static void	printpars(const char *format, size_t *len, va_list ap)
 		}
 		else
 		{
-			ft_chrprint(len, format[i]);
+			ft_printchr(len, format[i]);
 			i++;
 		}
 	}
