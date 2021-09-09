@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/18 14:23:51 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/26 17:28:42 by safoh         ########   odam.nl         */
+/*   Updated: 2021/09/09 15:26:00 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 {
 	unsigned int	c;
 
-	c = 160;
+	c = 0;
 	ft_printf("%X", c);
 	return (0);
 }

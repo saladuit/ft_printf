@@ -6,7 +6,7 @@
 #    By: safoh <safoh@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/08/11 14:27:07 by safoh         #+#    #+#                  #
-#    Updated: 2021/08/26 19:41:04 by safoh         ########   odam.nl          #
+#    Updated: 2021/09/09 15:22:45 by safoh         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ RM				:=	rm -f
 # OBJS			=	OBJECTS
 # LIB			=	LIBFT LIBRARY
 
-SRCS			:=	ft_printf.c ft_printpct.c ft_printpnt.c ft_printheX.c \
+SRCS			:=	ft_printf.c ft_printpct.c ft_printpnt.c ft_printhe_X.c \
 		ft_printhex.c ft_printudec.c ft_printdec.c ft_printstr.c ft_cnvspc.c \
 		ft_printchr.c 
 SRC_DIR			:=	./src

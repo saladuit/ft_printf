@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printheX.c                                      :+:    :+:            */
+/*   ft_printhe_X.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/26 18:26:48 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/26 18:27:06 by safoh         ########   odam.nl         */
+/*   Updated: 2021/09/09 15:20:47 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-void	ft_printheX(size_t *len, unsigned int ui)
+void	ft_printhe_X(size_t *len, unsigned int ui)
 {
 	char	*result;
 
