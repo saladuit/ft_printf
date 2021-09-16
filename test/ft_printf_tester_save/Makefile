@@ -6,6 +6,8 @@ SHELL = /bin/sh
 # I'm not proud of this
 TESTS = $(shell for ((i=1;i<=2000;i++)); do echo "$$i "; done)
 
+#SPECIFIERS = c s p d i u x X \% \# . m b
+
 NAME = tester
 LIBTEST = libtest/libtest.a
 LIBFTPRINTF = ${LIBFTPRINTF_DIR}/libftprintf.a
@@ -54,7 +56,7 @@ ${NAME}: ${LIBFTPRINTF} ${LIBTEST} ${HEADERS} ${OBJS}
 	mkdir -p files
 
 ${LIBFTPRINTF}:
-	make -C ${LIBFTPRINTF_DIR}
+	make -C ${LIBFTPRINTF_DIR} CFLAGS="${PRINTF_FLAGS}"
 
 ${LIBTEST}:
 	make -C libtest CFLAGS="${CFLAGS}"

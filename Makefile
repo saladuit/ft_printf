@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
+#    Makefile                                        |o_o || |                 #
 #                                                      +:+                     #
 #    By: safoh <safoh@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/08/11 14:27:07 by safoh         #+#    #+#                  #
-#    Updated: 2021/09/09 15:22:45 by safoh         ########   odam.nl          #
+#    Updated: 2021/09/16 15:46:34 by safoh        \___)=(___/                  #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,4 +99,4 @@ ft_printf_tester: all
 main:
 	gcc src/main.c -L. -lftprintf_debug -g -o printf_gdb
 
-.PHONY: all clean fclean ft_printf_test fr_printf_tester main
+.PHONY: all clean fclean ft_printf_test fr_printf_tester maie re
