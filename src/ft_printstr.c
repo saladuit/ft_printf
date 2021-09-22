@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printstr.c                                      :+:    :+:            */
+/*   ft_printstr.c                                   |o_o || |                */
 /*                                                     +:+                    */
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/26 18:29:20 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/26 18:29:39 by safoh         ########   odam.nl         */
+/*   Updated: 2021/09/22 13:54:00 by safoh        \___)=(___/                 */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+#include "../libs/libft/include/libft.h"
 
 void	ft_printstr(size_t *len, char *string)
 {
@@ -20,6 +21,7 @@ void	ft_printstr(size_t *len, char *string)
 		*len += ft_strlen("(null)");
 	}
 	ft_putstr_fd(string, 1);
-	*len += ft_strlen(string);
+	if (string)
+		*len += ft_strlen(string);
 	return ;
 }

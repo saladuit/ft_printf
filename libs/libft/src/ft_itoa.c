@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_itoa.c                                          :+:    :+:            */
+/*   ft_itoa.c                                       |o_o || |                */
 /*                                                     +:+                    */
 /*   By: saladin <saladin@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 02:50:50 by saladin       #+#    #+#                 */
-/*   Updated: 2021/08/26 18:48:54 by safoh         ########   odam.nl         */
+/*   Updated: 2021/09/22 14:46:55 by safoh        \___)=(___/                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ char	*ft_itoa(int nb)
 	long long	buffer;
 
 	buffer = nb;
-	len = ft_numlen(buffer);
+	len = ft_sgdnumlen(buffer);
 	neg = 0;
-	result = calloc(len + 1, sizeof(char));
+	result = ft_calloc(len + 1, sizeof(char));
 	if (!result)
 		return (0);
 	if (buffer < 0)

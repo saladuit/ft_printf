@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printpnt.c                                      :+:    :+:            */
+/*   ft_printpnt.c                                   |o_o || |                */
 /*                                                     +:+                    */
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/26 18:26:09 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/26 18:26:33 by safoh         ########   odam.nl         */
+/*   Updated: 2021/09/22 11:38:48 by safoh        \___)=(___/                 */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+#include "../libs/libft/include/libft.h"
 
 void	ft_printpnt(size_t *len, unsigned long ul)
 {

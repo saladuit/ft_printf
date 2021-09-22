@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_cnvspc.c                                        :+:    :+:            */
+/*   ft_cnvspc.c                                     |o_o || |                */
 /*                                                     +:+                    */
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/26 18:30:39 by safoh         #+#    #+#                 */
-/*   Updated: 2021/09/09 15:32:23 by safoh         ########   odam.nl         */
+/*   Updated: 2021/09/22 11:43:00 by safoh        \___)=(___/                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_cnvspc(int c, size_t *len, va_list ap)
 	else if (c == 'x')
 		ft_printhex(len, va_arg(ap, unsigned int));
 	else if (c == 'X')
-		ft_printhe_X(len, va_arg(ap, unsigned int));
+		ft_printhe_x(len, va_arg(ap, unsigned int));
 	else if (c == 'p')
 		ft_printpnt(len, va_arg(ap, unsigned long));
 	else if (c == '%')

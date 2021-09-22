@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strtrim.c                                       :+:    :+:            */
+/*   ft_strtrim.c                                    |o_o || |                */
 /*                                                     +:+                    */
 /*   By: saladin <saladin@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 02:51:34 by saladin       #+#    #+#                 */
-/*   Updated: 2021/07/27 16:21:04 by safoh         ########   odam.nl         */
+/*   Updated: 2021/09/22 13:59:30 by safoh        \___)=(___/                 */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
-// intput s1 "\t\nslkdj\nflsdjf\t\n" && set"\t\n"
-// while loop through s1
 
 char	*ft_strtrim(char const *s1, char const *set)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_split.c                                         :+:    :+:            */
+/*   ft_split.c                                      |o_o || |                */
 /*                                                     +:+                    */
 /*   By: saladin <saladin@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 02:51:11 by saladin       #+#    #+#                 */
-/*   Updated: 2021/07/28 13:39:00 by safoh         ########   odam.nl         */
+/*   Updated: 2021/09/22 13:58:13 by safoh        \___)=(___/                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	arraycount = ft_countchar(s, c);
-	split = (char **)calloc(arraycount + 1, sizeof(char *));
+	split = (char **)ft_calloc(arraycount + 1, sizeof(char *));
 	if (!split)
 		return (NULL);
 	split = ft_createarrray(split, (char *)s, c, arraycount);

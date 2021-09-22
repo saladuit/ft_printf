@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
+#    Makefile                                        |o_o || |                 #
 #                                                      +:+                     #
 #    By: safoh <safoh@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/08/11 13:33:46 by safoh         #+#    #+#                  #
-#    Updated: 2021/08/26 18:01:25 by safoh         ########   odam.nl          #
+#    Updated: 2021/09/22 14:47:57 by safoh        \___)=(___/                  #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS			:=	ft_memset.c ft_bzero.c ft_memcpy.c ft_strlen.c ft_atoi.c \
 		ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
 		ft_putnbr_fd.c ft_calloc.c ft_memchr.c ft_strmapi.c ft_itoa.c \
 		ft_numlen.c ft_uitoa.c ft_putuint_fd.c ft_uitoh.c ft_strtoupper.c \
-		ft_strtolower.c ft_ultoh.c
+		ft_strtolower.c ft_ultoh.c ft_sgdnumlen.c
 SRC_DIR 		:=	./src
 INC_DIR 		:=	./include
 BUILD_DIR		:=	./build
