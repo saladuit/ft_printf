@@ -6,28 +6,11 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/12 13:54:02 by safoh         #+#    #+#                 */
-/*   Updated: 2021/09/22 14:43:11 by safoh        \___)=(___/                 */
+/*   Updated: 2021/09/22 18:27:06 by safoh        \___)=(___/                 */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
-
-//size_t	ft_numlen(long long num)
-//{
-//	size_t	size;
-//
-//	size = 0;
-//	if (num == 0)
-//		return (1);
-//	if (num < 0)
-//		size++;
-//	while (num)
-//	{
-//		num /= 10;
-//		size++;
-//	}
-//	return (size);
-//}
 
 size_t	ft_numlen(long long num)
 {
@@ -47,4 +30,3 @@ size_t	ft_numlen(long long num)
 		return (6);
 	return ((ft_numlen(num / 1000000)) + 6);
 }
-
