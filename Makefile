@@ -6,7 +6,7 @@
 #    By: safoh <safoh@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/08/11 14:27:07 by safoh         #+#    #+#                  #
-#    Updated: 2021/09/22 11:40:45 by safoh        \___)=(___/                  #
+#    Updated: 2021/09/22 15:16:47 by safoh        \___)=(___/                  #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ RM				:=	rm -f
 
 SRCS			:=	ft_printf.c ft_printpct.c ft_printpnt.c ft_printhe_x.c \
 		ft_printhex.c ft_printudec.c ft_printdec.c ft_printstr.c ft_cnvspc.c \
-		ft_printchr.c 
+		ft_printchr.c
 SRC_DIR			:=	./src
 INC_DIR			:=	./include
 BUILD_DIR		:=	./build
