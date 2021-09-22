@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/26 15:54:22 by safoh         #+#    #+#                 */
-/*   Updated: 2021/08/26 19:22:36 by safoh         ########   odam.nl         */
+/*   Updated: 2021/09/17 15:56:35 by safoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,23 @@ static size_t	hexlen(unsigned int n)
 char	*ft_uitoh(unsigned int n)
 {
 	char	*result;
-	char	*hex;
+	//char	*hex;
 	size_t	len;
 	size_t	i;
+	
+// als iets const is mag je het initializen en definen op dezelfde regel
+const char hex[17] = "0123456789abcdef";
 
 	len = hexlen(n);
 	i = 0;
 	result = calloc(len + 1, sizeof(char));
-	hex = ft_strdup("0123456789abcdef");
+	//hex = ft_strdup("0123456789abcdef");
 	while (i < len)
 	{
 		result[len - 1] = hex[n % 16];
 		n /= 16;
 		len--;
 	}
-	free(hex);
+	//free(hex);
 	return (result);
 }
