@@ -6,7 +6,7 @@
 #    By: safoh <safoh@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/08/11 14:27:07 by safoh         #+#    #+#                  #
-#    Updated: 2021/09/22 15:16:47 by safoh        \___)=(___/                  #
+#    Updated: 2021/11/24 19:25:15 by safoh        \___)=(___/                  #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,4 +99,4 @@ ft_printf_tester: all
 main:
 	gcc src/main.c -L. -lftprintf_debug -g -o printf_gdb
 
-.PHONY: all clean fclean ft_printf_test fr_printf_tester maie re
+.PHONY: all clean fclean ft_printf_test fr_printf_tester main re
