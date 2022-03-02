@@ -6,7 +6,7 @@
 #    By: safoh <safoh@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/08/11 14:27:07 by safoh         #+#    #+#                  #
-#    Updated: 2021/11/24 19:25:15 by safoh        \___)=(___/                  #
+#    Updated: 2022/03/02 17:42:07 by safoh        \___)=(___/                  #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME) printf_gdb
 	$(MAKE) fclean -C libs/libft/
+	rm -rf printf_gdb.dSYM
 	@echo "Library printf cleaned"
 
 re: fclean all
@@ -97,6 +98,6 @@ ft_printf_tester: all
 	cd test/ft_printf_tester; sh test m
 
 main:
-	gcc src/main.c -L. -lftprintf_debug -g -o printf_gdb
+	gcc src/main.c -L. -lftprintf_debug  -g -o printf_gdb
 
 .PHONY: all clean fclean ft_printf_test fr_printf_tester main re
