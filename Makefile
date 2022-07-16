@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
+#                                                     .--.  _                  #
 #    Makefile                                        |o_o || |                 #
-#                                                      +:+                     #
-#    By: safoh <safoh@student.codam.nl>               +#+                      #
-#                                                    +#+                       #
-#    Created: 2021/08/11 14:27:07 by safoh         #+#    #+#                  #
-#    Updated: 2022/03/02 17:42:07 by safoh        \___)=(___/                  #
+#                                                    |:_/ || |_ _   ___  __    #
+#    By: safoh <safoh@student.codam.nl>             //   \ \ __| | | \ \/ /    #
+#                                                  (|     | )|_| |_| |>  <     #
+#    Created: 2022/07/16 23:01:02 by safoh        /'\_   _/`\__|\__,_/_/\_\    #
+#    Updated: 2022/07/16 23:01:29 by safoh        \___)=(___/                  #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,12 +90,6 @@ fclean: clean
 	@echo "Library printf cleaned"
 
 re: fclean all
-
-ft_printf_test: all
-	$(MAKE) quiet -C test/ft_printf_test/
-
-ft_printf_tester: all
-	cd test/ft_printf_tester; sh test m
 
 main:
 	gcc src/main.c -L. -lftprintf_debug  -g -o printf_gdb
